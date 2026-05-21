@@ -1,7 +1,3 @@
-Sure! Here's the full README:
-
----
-
 # Virtual Lan Networking Lab
 
 ## Overview
