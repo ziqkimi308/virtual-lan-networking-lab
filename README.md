@@ -32,7 +32,7 @@ This lab simulates a small office network environment built entirely on VirtualB
 ### Phase 1 — Virtual LAN Setup
 Configured two VMs on an isolated Internal Network in VirtualBox. Assigned a static IP to the Ubuntu Server via Netplan and verified connectivity between both machines.
 
-<!-- INSERT: screenshots/network-setup/ping-reply.png -->
+![Ping Reply](screenshots/network-setup/ping-reply.png)
 > *Ping from Windows 11 VM to Ubuntu Server (192.168.10.1) showing successful replies*
 
 ---
@@ -42,13 +42,13 @@ Configured two VMs on an isolated Internal Network in VirtualBox. Assigned a sta
 #### DNS — BIND9
 Installed and configured BIND9 on Ubuntu Server as the internal DNS server for the `lab.local` domain. Created a forward zone with A records resolving `server.lab.local` to `192.168.10.1`.
 
-<!-- INSERT: screenshots/dns-dhcp/nslookup-server-lab-local.png -->
+![nslookup](screenshots/dns-dhcp/nslookup-server-lab-local.png)
 > *nslookup server.lab.local resolving to 192.168.10.1*
 
 #### DHCP — isc-dhcp-server
 Installed and configured isc-dhcp-server on Ubuntu to automatically assign IPs to devices joining the network. Configured the DHCP pool to assign addresses in the `192.168.10.50–192.168.10.100` range.
 
-<!-- INSERT: screenshots/dns-dhcp/windows-ipconfig-dhcp.png -->
+![DHCP ipconfig](screenshots/dns-dhcp/windows-ipconfig-dhcp.png)
 > *ipconfig on Windows 11 VM showing DHCP-assigned IP 192.168.10.50*
 
 ---
@@ -58,10 +58,11 @@ Installed and configured isc-dhcp-server on Ubuntu to automatically assign IPs t
 #### SSH
 Installed OpenSSH server on Ubuntu. Connected from the host machine via PuTTY and PowerShell using NAT port forwarding (host port 2222 → VM port 22).
 
-<!-- INSERT: screenshots/remote-access/putty-ssh-session.png -->
+![PuTTY SSH](screenshots/remote-access/putty-ssh-session.png)
 > *PuTTY SSH session logged into Ubuntu Server*
 
-<!-- INSERT: screenshots/remote-access/powershell-ssh-session.png -->
+![PowerShell SSH](screenshots/remote-access/powershell-ssh-vm-to-vm.png)
+
 > *PowerShell SSH session into Ubuntu Server*
 
 #### VNC Remote Desktop
@@ -69,7 +70,7 @@ Installed TightVNC Server on Windows 11 VM. Connected from host machine using Ti
 
 > **Note:** Windows 11 Home edition does not support hosting RDP connections. TightVNC was used as an alternative — it provides equivalent remote desktop functionality using the VNC protocol, which is widely used in Linux environments and cross-platform support scenarios.
 
-<!-- INSERT: screenshots/remote-access/vnc-windows11-session.png -->
+![VNC Session](screenshots/remote-access/vnc-windows11-session.png)
 > *TightVNC Viewer connected to Windows 11 VM desktop*
 
 ---
@@ -81,19 +82,19 @@ Wireshark was installed on the Windows 11 VM to capture traffic directly on the 
 #### ICMP — Ping Traffic
 Captured ping packets from Windows 11 VM to Ubuntu Server using the `icmp` filter.
 
-<!-- INSERT: screenshots/wireshark/wireshark-icmp.png -->
+![Wireshark ICMP](screenshots/wireshark/wireshark-icmp.png)
 > *Wireshark icmp filter showing ping request and reply packets between 192.168.10.50 and 192.168.10.1*
 
 #### DNS — Name Resolution Traffic
 Captured DNS query and response when pinging `server.lab.local` from Windows 11 VM using the `dns` filter.
 
-<!-- INSERT: screenshots/wireshark/wireshark-dns.png -->
+![Wireshark DNS](screenshots/wireshark/wireshark-dns.png)
 > *Wireshark dns filter showing DNS query for server.lab.local and response returning 192.168.10.1*
 
 #### SSH — TCP Traffic
 Captured SSH handshake and encrypted session traffic using the `tcp.port == 22` filter.
 
-<!-- INSERT: screenshots/wireshark/wireshark-ssh.png -->
+![Wireshark SSH](screenshots/wireshark/wireshark-ssh.png)
 > *Wireshark tcp.port==22 filter showing SSH handshake between client and Ubuntu Server*
 
 ---
@@ -129,7 +130,7 @@ Captured SSH handshake and encrypted session traffic using the `tcp.port == 22` 
 ## Repository Structure
 
 ```
-it-support-lab-p2/
+virtual-lan-networking-lab/
 ├── README.md
 ├── /docs
 │   ├── network-diagram.md
