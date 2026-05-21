@@ -18,7 +18,7 @@ This lab simulates a small office network environment built entirely on VirtualB
 
 ### Network Topology
 
-<!-- INSERT: network-diagram.png (draw.io export) -->
+![Ping Reply](screenshots/network-setup/network-diagram.png)
 
 | Device | Hostname | IP Address | Role |
 |--------|----------|------------|------|
